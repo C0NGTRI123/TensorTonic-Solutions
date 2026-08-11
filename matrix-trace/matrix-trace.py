@@ -6,10 +6,10 @@ def matrix_trace(A):
     """
     # Write code here
     A = np.asarray(A)
-    num_rows, num_cols = A.shape
-    n = min(num_rows, num_cols)
-    trace_val = 0
-    for i in range(0, n):
-        trace_val += A[i, i]
-    return trace_val
-        
+    if A.ndim != 2 or A.shape[0] != A.shape[1]:
+        raise ValueError("Matrix must be square")
+    n = A.shape[0]
+    s = 0
+    for i in range(n):
+        s += A[i, i]
+    return float(s)
